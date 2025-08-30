@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PocketTutor – Learn smarter</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand"><span class="dot"></span> PocketTutor</div>
+    <div class="actions">
+      <button id="themeBtn" class="theme-toggle">Toggle Theme</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="grid-2">
+      <div class="panel">
+        <h2>Welcome Back</h2>
+        <p class="small">Login to continue learning</p>
+        <div style="height:12px"></div>
+        <label>Email</label>
+        <input id="loginEmail" class="input" type="email" placeholder="you@email.com" />
+        <div style="height:10px"></div>
+        <label>Password</label>
+        <input id="loginPass" class="input" type="password" placeholder="••••••••" />
+        <div style="height:10px"></div>
+        <button class="btn" id="loginBtn">Login</button>
+        <div style="height:12px"></div>
+        <div class="small">New here? <span id="gotoSignup" class="link">Create an account</span></div>
+      </div>
+
+      <div class="panel" id="signupPanel" style="display:block">
+        <h2>Create Account</h2>
+        <p class="small">Verify your email to activate</p>
+        <div class="grid-2">
+          <div>
+            <label>Name</label>
+            <input id="sName" class="input" type="text" placeholder="Your name" />
+          </div>
+          <div>
+            <label>Country</label>
+            <input id="sCountry" class="input" type="text" placeholder="Country" />
+          </div>
+        </div>
+        <div style="height:10px"></div>
+        <label>Email</label>
+        <input id="sEmail" class="input" type="email" placeholder="you@email.com" />
+        <div style="height:10px"></div>
+        <label>Password</label>
+        <input id="sPass" class="input" type="password" placeholder="Min 8 chars" />
+        <div style="height:10px"></div>
+
+        <label class="small"><input id="robotChk" type="checkbox" /> I’m not a robot</label>
+        <div style="height:10px"></div>
+        <button class="btn" id="signupBtn">Sign Up</button>
+        <div style="height:10px"></div>
+        <div class="small">Already have an account? <span id="gotoLogin" class="link">Login</span></div>
+        <div id="signupMsg" class="small"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/utils.js"></script>
+  <script src="scripts/auth.js"></script>
+</body>
+</html>

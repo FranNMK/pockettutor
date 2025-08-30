@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PocketTutor – Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand"><span class="dot"></span>PocketTutor <span class="badge">BETA</span></div>
+    <div class="actions">
+      <button id="themeBtn" class="theme-toggle">Theme</button>
+      <div class="profile-menu">
+        <button id="profileBtn" class="btn">Profile</button>
+        <div id="dropdown" class="dropdown">
+          <div class="small" id="userName">Name</div>
+          <hr style="border:0;border-top:1px solid rgba(255,255,255,.1);margin:8px 0">
+          <a class="link" href="#" id="menuProfile">Profile details</a><br>
+          <a class="link" href="#" id="menuSets">Flashcards generated</a><br>
+          <a class="link" href="#" id="menuEnrolled">Enrolled courses</a><br>
+          <a class="link" href="#" id="menuCertificates">Certificates</a><br>
+          <a class="link" href="#" id="menuPassword">Change password</a><br>
+          <a class="link" href="index.html" id="menuLogout">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="tabbar">
+      <div class="tab active" data-tab="flashcards">Flashcards</div>
+      <div class="tab" data-tab="ai-course">AI Course</div>
+      <div class="tab" data-tab="library">Course Library</div>
+    </div>
+
+    <!-- Flashcards -->
+    <section id="flashcards" class="panel">
+      <h3>Flashcards Generation</h3>
+      <p class="small">Paste notes or upload PDF/DOCX → summary, flashcards, related videos & links. Download as PDF/PNG/JPEG.</p>
+      <div style="height:10px"></div>
+      <label>Title</label>
+      <input id="fcTitle" class="input" placeholder="e.g., Excel Basics">
+      <div style="height:10px"></div>
+      <label>Paste Notes</label>
+      <textarea id="fcText" rows="6" class="input" placeholder="Paste notes here..."></textarea>
+      <div style="height:10px"></div>
+      <label>Or Upload File (PDF/DOCX)</label>
+      <input id="fcFile" type="file" accept=".pdf,.doc,.docx" />
+      <div style="height:10px"></div>
+      <button class="btn" id="genFcBtn">Generate</button>
+      <div id="fcSummary" class="small" style="margin-top:12px;"></div>
+      <div id="fcCards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:14px;"></div>
+      <div style="margin-top:12px">
+        <button class="btn" id="downloadPDF">Download PDF</button>
+        <button class="btn" id="downloadPNG">Download PNG</button>
+        <button class="btn" id="downloadJPEG">Download JPEG</button>
+      </div>
+      <div id="fcLinks" style="margin-top:12px;"></div>
+      <div id="fcVideos" style="margin-top:12px;"></div>
+    </section>
+
+    <!-- AI Course -->
+    <section id="ai-course" class="panel" style="display:none">
+      <h3>AI Course Generator</h3>
+      <div class="grid-2">
+        <div>
+          <label>What do you want to learn?</label>
+          <input id="topicInput" class="input" placeholder="e.g., Python for Data Analysis">
+        </div>
+        <div style="display:flex;align-items:end">
+          <button class="btn" id="genCourseBtn">Generate Course</button>
+        </div>
+      </div>
+      <div id="courseOutline" style="margin-top:12px"></div>
+      <button class="btn" id="enrollBtn" style="display:none">Enroll & Start</button>
+      <div id="progressWrap" style="margin-top:12px; display:none">
+        <div class="small">Progress: <span id="progressPct">0%</span></div>
+        <input type="range" min="0" max="100" id="progressRange">
+        <button class="btn" id="saveProgressBtn">Save Progress</button>
+      </div>
+      <div id="certificateWrap" style="display:none; margin-top:10px">
+        <span class="small">Completed! Generate certificate:</span>
+        <button class="btn" id="genCertBtn">Get Certificate</button>
+      </div>
+    </section>
+
+    <!-- Library -->
+    <section id="library" class="panel" style="display:none">
+      <h3>Course Library</h3>
+      <div id="courseList" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;"></div>
+    </section>
+  </div>
+<!-- include -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="scripts/utils.js"></script>
+  <script src="scripts/dashboard.js"></script>
+  <script src="scripts/flashcards.js"></script>
+  <script src="scripts/courses.js"></script>
+</body>
+</html>

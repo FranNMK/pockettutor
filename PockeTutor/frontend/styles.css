@@ -1,0 +1,70 @@
+:root {
+  --bg: #0b1220;
+  --panel: #0f172a;
+  --text: #e2e8f0;
+  --accent: #22d3ee;
+  --accent-2: #22c55e;
+}
+
+[data-theme="light"]{
+  --bg:#f7fafc; --panel:#ffffff; --text:#0f172a; --accent:#2563eb; --accent-2:#16a34a;
+}
+
+*{box-sizing:border-box} html,body{height:100%}
+body{
+  margin:0; font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial;
+  background:linear-gradient(120deg, #0b1220 0%, #111827 100%); color:var(--text);
+}
+.container{max-width:1100px; margin:0 auto; padding:24px;}
+.navbar{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:12px 18px; background:rgba(255,255,255,0.04); backdrop-filter: blur(8px);
+  border-radius:16px; margin:16px; border:1px solid rgba(255,255,255,0.08);
+}
+.brand{display:flex; gap:10px; align-items:center; font-weight:700; letter-spacing:.4px}
+.brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent); box-shadow:0 0 12px var(--accent);}
+.actions{display:flex; gap:12px; align-items:center}
+.btn{
+  padding:10px 14px; border-radius:12px; border:1px solid transparent; cursor:pointer;
+  background:linear-gradient(90deg, var(--accent), var(--accent-2)); color:#001018;
+  font-weight:600; transition: transform .15s ease, box-shadow .2s ease;
+}
+.btn:hover{ transform: translateY(-1px); box-shadow:0 6px 20px rgba(34,211,238,.25)}
+.link{color:var(--accent); cursor:pointer; text-decoration:none}
+
+.panel{
+  background:var(--panel); border-radius:18px; padding:24px; border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+.grid-2{display:grid; grid-template-columns: repeat(2, 1fr); gap:24px}
+@media(max-width:900px){.grid-2{grid-template-columns:1fr}}
+
+.input, .select, textarea{
+  width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.12);
+  background:#0b1220; color:var(--text); outline:none;
+}
+label{font-size:.9rem; opacity:.9}
+.small{font-size:.85rem; opacity:.85}
+
+.flip-wrap{ perspective: 1200px;}
+.card{
+  position:relative; height:420px; transform-style: preserve-3d; transition: transform .5s ease;
+}
+.card.flip{ transform: rotateY(180deg) }
+.face{
+  position:absolute; inset:0; backface-visibility:hidden; padding:24px;
+}
+.back{ transform: rotateY(180deg) }
+
+.tabbar{display:flex; gap:10px; margin-bottom:14px}
+.tab{ padding:8px 12px; border-radius:10px; cursor:pointer; border:1px solid rgba(255,255,255,.1)}
+.tab.active{ background:rgba(34,211,238,.15); border-color:var(--accent); color:var(--accent)}
+.badge{display:inline-block; padding:4px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.15); font-size:.8rem}
+.profile-menu{position:relative}
+.dropdown{
+  position:absolute; right:0; top:42px; background:var(--panel); border:1px solid rgba(255,255,255,.12);
+  border-radius:12px; min-width:240px; padding:10px; display:none;
+}
+.dropdown.show{display:block}
+.theme-toggle{background:transparent; border:1px solid rgba(255,255,255,.2); color:var(--text)}
