@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pocket Tutor — Login</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/module/supabase.min.js"></script>
+  <!-- Stripe.js (public) -->
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <main class="page">
+    <header class="site-header">
+      <img src="assets/logo.svg" alt="Pocket Tutor logo" class="logo" />
+      <h1>Pocket Tutor</h1>
+      <p class="tagline">Learn smarter. Remember faster.</p>
+    </header>
+
+    <section class="center-area">
+      <div class="card-scene">
+        <div id="auth-card" class="auth-card">
+          <!-- FRONT: LOGIN -->
+          <div class="face face-front">
+            <h2 class="glow">Login</h2>
+            <form id="login-form" class="form">
+              <label>Email
+                <input id="login-email" type="email" required placeholder="you@example.com" />
+              </label>
+
+              <label>Password
+                <input id="login-password" type="password" required placeholder="********" />
+              </label>
+
+              <button id="login-btn" class="btn primary" type="submit">Log in</button>
+
+              <div class="row small">
+                <a href="#" id="show-signup" class="link">Create account</a>
+                <a href="#" id="forgot-password" class="link">Forgot password?</a>
+              </div>
+
+              <div class="social-row">
+                <button id="login-google" class="btn social" type="button">Continue with Google</button>
+                <button id="login-github" class="btn social" type="button">Continue with GitHub</button>
+                <button id="login-apple" class="btn social" type="button">Continue with Apple</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- BACK: SIGNUP -->
+          <div class="face face-back">
+            <h2 class="glow">Sign Up</h2>
+            <form id="signup-form" class="form">
+              <label>Full name
+                <input id="signup-name" type="text" required placeholder="Your name" />
+              </label>
+
+              <label>Email
+                <input id="signup-email" type="email" required placeholder="you@example.com" />
+              </label>
+
+              <label>Country
+                <select id="signup-country"></select>
+              </label>
+
+              <label>Password
+                <input id="signup-password" type="password" required placeholder="min 8 characters" />
+              </label>
+
+              <label>Confirm password
+                <input id="signup-confirm-password" type="password" required placeholder="confirm" />
+              </label>
+
+              <div id="password-checklist" class="checklist">
+                <div><input type="checkbox" id="pw-len" disabled /> Min 8 chars</div>
+                <div><input type="checkbox" id="pw-upper" disabled /> Uppercase letter</div>
+                <div><input type="checkbox" id="pw-number" disabled /> Number</div>
+                <div><input type="checkbox" id="pw-special" disabled /> Special character</div>
+                <div><input type="checkbox" id="pw-match" disabled /> Matches confirmation</div>
+              </div>
+
+              <button id="signup-btn" class="btn primary" type="submit">Create account</button>
+
+              <div class="row small">
+                <a href="#" id="show-login" class="link">Back to login</a>
+              </div>
+
+              <div class="social-row">
+                <button id="signup-google" class="btn social" type="button">Continue with Google</button>
+                <button id="signup-github" class="btn social" type="button">Continue with GitHub</button>
+                <button id="signup-apple" class="btn social" type="button">Continue with Apple</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div id="toast" class="toast hidden"></div>
+    </section>
+  </main>
+
+  <script type="module" src="scripts/utils.js"></script>
+  <script type="module" src="scripts/auth.js"></script>
+
+  <script>
+    // Flip card between login and signup
+    const authCard = document.getElementById('auth-card');
+    document.getElementById('show-signup').addEventListener('click', (e) => {
+      e.preventDefault();
+      authCard.classList.add('flipped');
+    });
+
+    document.getElementById('show-login').addEventListener('click', (e) => {
+      e.preventDefault();
+      authCard.classList.remove('flipped');
+    });
+
+    // Forgot password handler (simple redirect to Supabase flow)
+    document.getElementById('forgot-password').addEventListener('click', (e) => {
+      e.preventDefault();
+      alert("Password reset link will be sent via Supabase.");
+      // you’ll later implement supabase.auth.resetPasswordForEmail(email)
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script type="module" src="scripts/auth.js"></script>
+
+</body>
+</html>

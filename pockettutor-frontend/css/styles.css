@@ -1,0 +1,79 @@
+:root{
+  --bg-1: linear-gradient(135deg,#0f172a,#07122b 40%, #101827);
+  --card-bg: rgba(255,255,255,0.04);
+  --accent: #4f46e5; /* indigo */
+  --accent-2: #00d4ff; /* teal */
+  --glass: rgba(255,255,255,0.04);
+  --muted: #9aa4b2;
+  --radius: 12px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;}
+
+body,html{height:100%;background:var(--bg-1);color:#e6eef8}
+
+.page{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:40px 16px}
+.site-header{text-align:center;margin-bottom:18px}
+.logo{width:60px;height:60px}
+.site-header h1{font-size:28px;letter-spacing:0.5px}
+.tagline{color:var(--muted);margin-top:6px}
+
+/* center and card scene */
+.center-area{display:flex;justify-content:center;align-items:center;width:100%}
+.card-scene{perspective:1400px}
+.auth-card{width:360px;height:auto;transform-style:preserve-3d;transition:transform 0.45s cubic-bezier(.2,.9,.25,1)}
+.auth-card.flipped{transform:rotateY(180deg)}
+
+/* faces */
+.face{position:relative;backface-visibility:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.05));border-radius:12px;padding:22px;box-shadow:0 10px 30px rgba(2,6,23,0.6);width:360px}
+.face-back{transform:rotateY(180deg);position:absolute;top:0;left:0}
+
+/* headings */
+.face h2{font-size:20px;margin-bottom:12px;color:#fff}
+.glow{text-shadow:0 0 8px rgba(79,70,229,0.6);}
+
+/* form */
+.form{display:flex;flex-direction:column;gap:12px}
+.form label{display:flex;flex-direction:column;font-size:13px;color:var(--muted)}
+.form input[type="text"], .form input[type="email"], .form input[type="password"], .form select, textarea{padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:#fff;outline:none}
+.form input:focus, .form select:focus{box-shadow:0 0 0 3px rgba(79,70,229,0.12);border-color:var(--accent)}
+.btn{padding:10px 14px;border-radius:10px;border:none;background:transparent;color:#e6eef8;cursor:pointer}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));box-shadow:0 8px 20px rgba(79,70,229,0.12)}
+.btn.outline{border:1px solid rgba(255,255,255,0.06)}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.small{font-size:13px;color:var(--muted)}
+.link{color:var(--accent);text-decoration:none;cursor:pointer}
+
+/* social */
+.social-row{display:grid;grid-template-columns:1fr;gap:8px;margin-top:8px}
+.btn.social{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04)}
+
+/* checklist */
+.checklist{display:flex;flex-direction:column;gap:6px;background:transparent;padding:6px;border-radius:6px;color:var(--muted);font-size:13px}
+
+/* toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.6);padding:10px 16px;border-radius:8px;color:#fff}
+.hidden{display:none}
+
+/* Layout for dashboard */
+.layout{display:flex;height:100vh}
+.sidebar{width:260px;background:rgba(2,6,23,0.6);padding:20px;border-right:1px solid rgba(255,255,255,0.03)}
+.sidebar .logo-block{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.sidebar nav a{display:block;padding:10px;border-radius:8px;color:var(--muted);text-decoration:none;margin-bottom:6px}
+.sidebar nav a.active{background:rgba(255,255,255,0.02);color:#fff}
+.main{flex:1;padding:20px;overflow:auto}
+.main-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.panel{background:var(--card-bg);padding:16px;border-radius:12px;margin-bottom:12px}
+textarea{min-height:90px;padding:12px;border-radius:8px;background:rgba(255,255,255,0.02);border:none;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center}
+.modal-card{background:var(--card-bg);padding:18px;border-radius:12px;width:90%;max-width:600px}
+.user-info{color:var(--muted);font-size:13px}
+
+/* small screens */
+@media (max-width:800px){
+  .layout{flex-direction:column}
+  .sidebar{width:100%;display:flex;justify-content:space-between;align-items:center}
+  .main{padding:12px}
+  .auth-card{width:320px}
+}
