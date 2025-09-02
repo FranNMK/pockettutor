@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pocket Tutor — Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/module/supabase.min.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo-block">
+        <img src="assets/logo.svg" alt="logo" />
+        <h2>Pocket Tutor</h2>
+      </div>
+
+      <nav>
+        <a href="#" id="nav-home" class="active">Home</a>
+        <a href="#" id="nav-courses">My Courses</a>
+        <a href="#" id="nav-flashcards">Flashcards</a>
+        <a href="#" id="nav-certificates">Certificates</a>
+        <a href="#" id="nav-upgrade">Upgrade</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="logout-btn" class="btn outline">Logout</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="main-header">
+        <h1 id="page-title">Home</h1>
+        <div id="user-info" class="user-info">Loading...</div>
+      </header>
+
+      <section id="content" class="content">
+        <!-- HOME: show generation card + enrolled courses -->
+        <div id="generation-card" class="panel">
+          <h3>AI Course Generation</h3>
+          <p id="generation-status">You have <strong id="remaining-generation">1</strong> free generation left today.</p>
+          <textarea id="generate-topic" placeholder="Type a course topic or paste notes..."></textarea>
+          <div class="row">
+            <button id="generate-course-btn" class="btn primary">Generate Course</button>
+            <button id="generate-flashcards-btn" class="btn">Generate Flashcards</button>
+          </div>
+        </div>
+
+        <div id="enrolled-courses" class="panel">
+          <h3>Enrolled Courses</h3>
+          <div id="courses-grid" class="grid"></div>
+        </div>
+
+        <div id="flashcards-panel" class="panel hidden">
+          <h3>My Flashcards</h3>
+          <div id="flashcards-list"></div>
+        </div>
+
+        <div id="certificates-panel" class="panel hidden">
+          <h3>Certificates</h3>
+          <div id="certificates-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <h3 id="modal-title">Modal</h3>
+      <div id="modal-body"></div>
+      <div class="row">
+        <button id="modal-close" class="btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="scripts/utils.js"></script>
+  <script type="module" src="scripts/auth.js"></script>
+  <script type="module" src="scripts/flashcards.js"></script>
+  <script type="module" src="scripts/payments.js"></script>
+</body>
+</html>
